@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Bot Detector</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 700px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1DA1F2;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .btn-primary {
+            background-color: #1DA1F2;
+            border-color: #1DA1F2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Twitter Fake Profile Detector</h1>
+        <form action="/predict" method="post">
+            <div class="mb-3">
+                <label for="followers_count" class="form-label">Followers Count</label>
+                <input type="number" class="form-control" id="followers_count" name="followers_count" required min="0">
+            </div>
+            <div class="mb-3">
+                <label for="friends_count" class="form-label">Friends Count</label>
+                <input type="number" class="form-control" id="friends_count" name="friends_count" required min="0">
+            </div>
+            <div class="mb-3">
+                <label for="statuses_count" class="form-label">Statuses Count</label>
+                <input type="number" class="form-control" id="statuses_count" name="statuses_count" required min="0">
+            </div>
+            <div class="mb-3">
+                <label for="verified" class="form-label">Verified Account?</label>
+                <select class="form-select" id="verified" name="verified" required>
+                    <option value="1">Yes</option>
+                    <option value="0" selected>No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="account_age_days" class="form-label">Account Age (days)</label>
+                <input type="number" class="form-control" id="account_age_days" name="account_age_days" required min="0">
+            </div>
+            <div class="mb-3">
+                <label for="default_profile_image" class="form-label">Default Profile Image?</label>
+                <select class="form-select" id="default_profile_image" name="default_profile_image" required>
+                    <option value="1">Yes</option>
+                    <option value="0" selected>No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Account Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter the account's bio text here..."></textarea>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Detect Fake Profile</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
